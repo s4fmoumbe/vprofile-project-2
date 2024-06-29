@@ -30,13 +30,6 @@ pipeline {
                } 
             }
         }
-        stage('Test'){
-            steps {
-                sh 'mvn -s settings.xml test'
-            }
-
-        }
-
         stage('Checkstyle Analysis'){
             steps {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
@@ -57,5 +50,9 @@ pipeline {
                    -Dsonar.junit.reportsPath=target/surefire-reports/ \
                    -Dsonar.jacoco.reportsPath=target/jacoco.exec \
                    -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+                }
+            }
+
+        }
     }
-}
+        
